@@ -35,23 +35,7 @@ class GuzzleClient extends AbstractClient implements AsyncClientInterface
     {
         $request = new Request($method, $url);
 
-        $optionsGuzzle = [
-            'http_errors' => false
-        ];
-        if (isset($options[ClientInterface::OPTION_QUERY])) {
-            $optionsGuzzle['query'] = $options[ClientInterface::OPTION_QUERY];
-        }
-        if (isset($options[ClientInterface::OPTION_BODY])) {
-            $optionsGuzzle['form_params'] = $options[ClientInterface::OPTION_BODY];
-        }
-        if (isset($options[ClientInterface::OPTION_AUTH])) {
-            $optionsGuzzle['auth'] = $options[ClientInterface::OPTION_AUTH];
-        }
-        if (isset($options[ClientInterface::OPTION_HEADERS])) {
-            $optionsGuzzle['headers'] = $options[ClientInterface::OPTION_HEADERS];
-        }
-
-        $response = $this->client->send($request, $optionsGuzzle);
+        $response = $this->client->send($request, $options);
 
         return new Response($response->getStatusCode(), (string) $response->getBody(), $response->getHeaders());
     }

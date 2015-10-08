@@ -21,9 +21,15 @@
   },
   "suggest": {
     "symfony/http-kernel": "To use KernelLogClient",
-    "guzzlehttp/guzzle": "To use ClientClient"
+    "guzzlehttp/guzzle": "To use GuzzleClient",
+    "symfony/process": "To use PhantomJsClient"
   },
   "autoload": {
     "psr-0": {"Dwo\\Client": "src/"}
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
   }
 }
